@@ -1,0 +1,2 @@
+C:\Visual Studio\Paint\x64\Debug\raylib.dll
+C:\Visual Studio\Paint\Paint\x64\Debug\Paint.vcxproj.Up2Date

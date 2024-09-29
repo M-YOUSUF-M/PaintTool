@@ -1,0 +1,5 @@
+﻿  main.cpp
+  Source.cpp
+C:\Visual Studio\Paint\src\Source.cpp(217,30): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+  Paint.vcxproj -> C:\Visual Studio\Paint\x64\Debug\Paint.exe
