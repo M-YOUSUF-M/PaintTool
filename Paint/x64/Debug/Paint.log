@@ -1,5 +1,8 @@
-﻿  main.cpp
+﻿  The vcpkg manifest was disabled, but we found a manifest file in C:\Visual Studio\. You may want to enable vcpkg manifests in your properties page or pass /p:VcpkgEnableManifest=true to the msbuild invocation.
   Source.cpp
-C:\Visual Studio\Paint\src\Source.cpp(217,30): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  Generating Code...
+C:\Visual Studio\Paint\src\Source.cpp(8,50): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Visual Studio\Paint\src\Source.cpp(8,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Visual Studio\Paint\src\Source.cpp(14,49): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Visual Studio\Paint\src\Source.cpp(14,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Visual Studio\Paint\src\Source.cpp(167,30): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   Paint.vcxproj -> C:\Visual Studio\Paint\x64\Debug\Paint.exe

@@ -4,60 +4,47 @@
 Toolbar ToolBar(void) {
     Toolbar toolbar;
     Button brush;
-    //brush.texture = LoadTextureFromImage(toolbar.icon.brush_icon);
-    //brush.rec_b = { 5,40,(float)brush.texture.width,(float)brush.texture.height };
     brush.rec_b = { 5,40,50.0f,50.0f };
+    DrawText("Brush", brush.rec_b.x , brush.rec_b.y, 15, BLACK);
     brush.is_selected = false;
     brush.id = BRUSH;
 
     Button erase;
-    //erase.texture = LoadTextureFromImage(toolbar.icon.erase_icon);
-    //erase.rec_b = { 5 , 40 + brush.rec_b.width + 5 , (float)erase.texture.width,(float) erase.texture.height };
-    erase.rec_b = { 5 , 40 + brush.rec_b.width + 5 , 50.0f,50.0f };
+     erase.rec_b = { 5 , 40 + brush.rec_b.width + 5 , 50.0f,50.0f };
+    DrawText("Erase", erase.rec_b.x, erase.rec_b.y, 15, BLACK);
     erase.is_selected = false;
     erase.id = ERASER;
 
-    Button background_changer;
-    background_changer.rec_b = { 5,erase.rec_b.y + 50.0f + 5.0f,50.0f,50.0f };
-    background_changer.is_selected = false;
-    background_changer.id = BACKGROUND_CHANGE;
-
     Button red;
-    //red.texture = LoadTextureFromImage(toolbar.icon.red_icon);
-    //red.rec_b = { 5 , erase.rec_b.y + red.texture.height + 5 , (float)red.texture.width,(float)red.texture.height };
-    red.rec_b = { 5 , background_changer.rec_b.y + 50.0f + 5.0f , 50.0f,50.0f };
+    red.rec_b = { 5 , erase.rec_b.y + 50.0f + 5.0f , 50.0f,50.0f };
     red.is_selected = false;
     red.id = COLOR_RED;
 
     Button blue;
-    //blue.texture = LoadTextureFromImage(toolbar.icon.blue_icon);
-    //blue.rec_b = { 5 , red.rec_b.y + blue.texture.height + 5 , (float)blue.texture.width,(float)blue.texture.height };
     blue.rec_b = { 5 , red.rec_b.y + 50.0f + 5 , 50.0f,50.0f };
     blue.is_selected = false;
     blue.id = COLOR_BLUE;
 
     Button green;
-    //green.texture = LoadTextureFromImage(toolbar.icon.green_icon);
-    //green.rec_b = { 5 , blue.rec_b.y + green.texture.height + 5, (float)green.texture.width,(float)green.texture.height };
     green.rec_b = { 5 , blue.rec_b.y + 50.0f + 5, 50.0f,50.0f };
     green.is_selected = false;
     green.id = COLOR_GREEN;
-#if 0
-    UnloadImage(toolbar.icon.red_icon);
-    UnloadImage(toolbar.icon.blue_icon);
-    UnloadImage(toolbar.icon.green_icon);
-    UnloadImage(toolbar.icon.brush_icon);
-    UnloadImage(toolbar.icon.erase_icon);
-#endif
+
+    Button black;
+    black.rec_b = { 5, green.rec_b.y + 50.0f + 5 , 50.0f,50.0f };
+    black.is_selected = false;
+    black.id = COLOR_BLACK;
+ 
     toolbar.number_of_buttons = 7;
     toolbar.rec_t = { 5,40,brush.rec_b.width,toolbar.number_of_buttons * (brush.rec_b.height - 4) };
 
+
     toolbar.buttons.push_back(brush);
     toolbar.buttons.push_back(erase);
-    toolbar.buttons.push_back(background_changer);
     toolbar.buttons.push_back(red);
     toolbar.buttons.push_back(blue);
     toolbar.buttons.push_back(green);
+    toolbar.buttons.push_back(black);
     return toolbar;
 }
 
@@ -68,43 +55,34 @@ void DrawToolBar(Toolbar T) {
         {
         case BRUSH:
             DrawRectangleRec(itr.rec_b, WHITE);
-            //DrawTexture(itr.texture,itr.rec_b.x,itr.rec_b.y,WHITE);
             DrawRectangleLines((int) itr.rec_b.x, (int) itr.rec_b.y, (int)itr.rec_b.width, (int)itr.rec_b.height, BLACK);
             break;
         case ERASER:
-            DrawRectangleRec(itr.rec_b, WHITE);
-            //DrawTexture(itr.texture, itr.rec_b.x, itr.rec_b.y, WHITE);
-            DrawRectangleLines((int)itr.rec_b.x, (int)itr.rec_b.y, (int)itr.rec_b.width, (int)itr.rec_b.height, BLACK);
-            break;
-        case BACKGROUND_CHANGE:
             DrawRectangleRec(itr.rec_b, WHITE);
             DrawRectangleLines((int)itr.rec_b.x, (int)itr.rec_b.y, (int)itr.rec_b.width, (int)itr.rec_b.height, BLACK);
             break;
         case COLOR_RED:
             DrawRectangleRec(itr.rec_b, RED);
-            //DrawTexture(itr.texture, itr.rec_b.x, itr.rec_b.y, WHITE);
-            DrawRectangleLines((int)itr.rec_b.x, (int)itr.rec_b.y, (int)itr.rec_b.width, (int)itr.rec_b.height, BLACK);
+                        DrawRectangleLines((int)itr.rec_b.x, (int)itr.rec_b.y, (int)itr.rec_b.width, (int)itr.rec_b.height, BLACK);
             break;
         case COLOR_BLUE:
             DrawRectangleRec(itr.rec_b, BLUE);
-            //DrawTexture(itr.texture, itr.rec_b.x, itr.rec_b.y, WHITE);
+            
             DrawRectangleLines((int)itr.rec_b.x, (int)itr.rec_b.y, (int)itr.rec_b.width, (int)itr.rec_b.height, BLACK);
             break;
         case COLOR_GREEN:
             DrawRectangleRec(itr.rec_b, GREEN);
-            //DrawTexture(itr.texture, itr.rec_b.x, itr.rec_b.y, WHITE);
+            
             DrawRectangleLines((int)itr.rec_b.x, (int)itr.rec_b.y, (int)itr.rec_b.width, (int)itr.rec_b.height, BLACK);
             break;
-
+        case COLOR_BLACK: 
+            DrawRectangleRec(itr.rec_b, BLACK);
+            DrawRectangleLines((int)itr.rec_b.x, (int)itr.rec_b.y, (int)itr.rec_b.width, (int)itr.rec_b.height, BLACK);
+            break;
         default:
             break;
         }
     }
-#if 0
-    for (auto& itr : T.buttons) {
-        UnloadTexture(itr.texture);
-    }
-#endif
 }
 
 void updateChoice(Toolbar* T, Boolean* is, Colors* color) {
@@ -118,7 +96,6 @@ void updateChoice(Toolbar* T, Boolean* is, Colors* color) {
                     if (is->_erasing) {
                         is->_erasing = false;
                     }
-                    //std::cout << "BRUSH selected" << std::endl;
                     break;
                 case ERASER:
                     if (!is->_erasing) {
@@ -129,38 +106,6 @@ void updateChoice(Toolbar* T, Boolean* is, Colors* color) {
                     }
                     std::cout << "ERASE selected" << std::endl;
                     break;
-#if 0
-                case BACKGROUND_CHANGE:
-                    if (!is->_Filling and !is->_Fill_color_background) {
-                        is->_Filling = true;
-                        is->_Fill_color_background = true;
-                        is->_brushing = false;
-                    }
-                    else {
-                        is->_Filling = false;
-                        is->_Fill_color_background = false;
-                        is->_brushing = true;
-                    }
-                    std::cout << "FILLING" << std::endl;
-                    for (auto& itr : T->buttons) {
-                        if (CheckCollisionPointRec(GetMousePosition(), itr.rec_b)) {
-                            switch (itr.id) {
-                            case COLOR_RED:
-                                color->paint_board_color= RED;
-                                break;
-                            case COLOR_BLUE:
-                                color->paint_board_color = BLUE;
-                                break;
-                            case COLOR_GREEN:
-                                color->paint_board_color = GREEN;
-                                break;
-                            default:
-                                break;
-                            }
-                        }
-                    }
-                    break;
-#endif
                 case COLOR_RED:
                     color->bursh_color = RED;
                     std::cout << "BRUSH_COLOR_RED selected" << std::endl;
@@ -172,6 +117,11 @@ void updateChoice(Toolbar* T, Boolean* is, Colors* color) {
                 case COLOR_GREEN:
                     color->bursh_color = GREEN;
                     std::cout << "BRUSH_COLOR_GREEN selected" << std::endl;
+                    break;
+                case COLOR_BLACK:
+                    color->bursh_color = BLACK;
+                    std::cout << "BRUSH_COLOR_BLACK selected" << std::endl;
+                    break;
                 }
             }
         }

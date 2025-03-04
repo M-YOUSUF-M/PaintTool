@@ -19,7 +19,8 @@ enum Button_ID {
 	BACKGROUND_CHANGE = 3, 
 	COLOR_RED = 4, 
 	COLOR_BLUE = 5, 
-	COLOR_GREEN = 6 
+	COLOR_GREEN = 6, 
+	COLOR_BLACK = 7
 };
 
 #if 1
